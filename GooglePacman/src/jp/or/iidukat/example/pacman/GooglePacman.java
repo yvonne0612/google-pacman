@@ -35,7 +35,7 @@ public class GooglePacman extends Activity implements OnClickListener {
     }
     
     private void initMainView() {
-        setContentView(R.layout.main);
+        setContentView(R.layout.game);
         
         View newGameButton = findViewById(R.id.new_game_button);
         newGameButton.setOnClickListener(this);
