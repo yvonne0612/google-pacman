@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.p2p.WifiP2pDevice;
+import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
@@ -24,6 +25,7 @@ public class WifiBroadcastManager extends BroadcastReceiver {
     private WifiP2pManager manager;
     private Channel channel;
     private PeerFinderActivity activity;
+    public static boolean p2pInfoIsSet =false;
 
     /**
      * @param manager WifiP2pManager system service
@@ -79,7 +81,8 @@ public class WifiBroadcastManager extends BroadcastReceiver {
                     .getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
 
             if (networkInfo.isConnected()) {
-
+            	
+            	
                 // we are connected with the other device, request connection
                 // info to find group owner IP
 

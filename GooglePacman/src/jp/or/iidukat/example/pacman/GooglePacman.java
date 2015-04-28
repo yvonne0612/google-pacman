@@ -10,7 +10,8 @@ public class GooglePacman extends Activity implements OnClickListener {
 
     private PacmanGame game;
     private GameView gameView;
-    
+    public static boolean isOwner = false;
+    public static String ownerIP = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

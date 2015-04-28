@@ -123,8 +123,7 @@ import android.widget.Toast;
 
      @Override
      public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	 Intent startGame = new Intent(getActivity(), GooglePacman.class);
-    	 getActivity().startService(startGame);
+    	 
          // User has picked an image. Transfer it to group owner i.e peer using
          // FileTransferService.
          /*Uri uri = data.getData();
@@ -173,14 +172,15 @@ import android.widget.Toast;
          this.info = info;
          this.getView().setVisibility(View.VISIBLE);
          if(info.isGroupOwner){
-        	 ownerIP = info.groupOwnerAddress.getHostAddress();
+        	 GooglePacman.isOwner = true;
          }
          else{
-        	 ownerIP = info.groupOwnerAddress.getHostAddress();
-        	 if((otherIP = DeviceDetailFragment.getLocalIpv4Address())==null){
-        		 System.out.print("emply local IP\n");
-        	 }
+        	 GooglePacman.isOwner = false;
+
          }
+         GooglePacman.ownerIP = info.groupOwnerAddress.getHostAddress();
+         Intent startGame = new Intent(getActivity(), GooglePacman.class);
+    	 getActivity().startService(startGame);
         /* // The owner IP is now known.
          TextView view = (TextView) mContentView.findViewById(R.id.group_owner);
          view.setText(getResources().getString(R.string.group_owner_text)
